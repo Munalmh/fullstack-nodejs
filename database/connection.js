@@ -2,6 +2,7 @@
 // database connection code
 const {Sequelize, DataTypes} = require("sequelize")
 
+
 // const sequelize = require("sequelize")
 // const sequelize = sequelize.sequelize
 // const DataTypes = sequelize.DataTypes
@@ -21,5 +22,10 @@ const db ={}
 db.sequelize = "sequelize"
 db.sequelize = "sequelize"
 
+db.books = require("./models/book.model")(sequelize,DataTypes)
+// migration
+sequelize.sync({alter : false}).then(()=>{
+    console.log("migrate vayo")
+})
 //code for exporting
 module.exports = db
